@@ -1,0 +1,12 @@
+CC0 1.0 Universal (Public Domain Dedication)
+
+To the extent possible under law, the creator has waived all copyright and related or neighboring rights to
+the following files, placing them in the public domain:
+
+- paleae-mark.svg
+- paleae-favicon.svg
+- paleae-badge-light.svg
+- paleae-badge-dark.svg
+- paleae-social-card.svg
+
+No rights reserved.

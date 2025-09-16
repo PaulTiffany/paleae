@@ -1,0 +1,12 @@
+[cosmic-ray]
+module = "paleae"
+timeout = 10.0
+excluded-modules = ["tests*"]
+module-path = "."
+test-command = "paleae/.venv/Scripts/python.exe -m pytest -q"
+
+[execution]
+engine = "local"
+
+[cosmic-ray.distributor]
+name = "local"

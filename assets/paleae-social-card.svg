@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Paleae — Ship your repo to your AI">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0b0d"/>
+      <stop offset="1" stop-color="#14181c"/>
+    </linearGradient>
+    <linearGradient id="grain" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#63e6a5"/>
+      <stop offset="1" stop-color="#41c98a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- glow -->
+  <ellipse cx="380" cy="300" rx="300" ry="220" fill="#5ee1a0" opacity="0.10"/>
+  <!-- icon circle -->
+  <circle cx="380" cy="300" r="120" fill="url(#grain)"/>
+  <!-- wheat icon enlarged -->
+  <g transform="translate(308,225)" fill="none" stroke="#0e1012" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120 20v170"/>
+    <path d="M120 40L80 60"/>
+    <path d="M120 70L80 90"/>
+    <path d="M120 100L80 120"/>
+    <path d="M120 130L80 150"/>
+    <path d="M120 40L160 60"/>
+    <path d="M120 70L160 90"/>
+    <path d="M120 100L160 120"/>
+    <path d="M120 130L160 150"/>
+  </g>
+  <!-- title and tagline -->
+  <g fill="#f3f5f7">
+    <text x="560" y="300" font-family="Inter, Segoe UI, system-ui, -apple-system, Arial, sans-serif" font-size="86" font-weight="900" letter-spacing="-1">Paleae</text>
+    <text x="560" y="360" font-family="Inter, Segoe UI, system-ui, -apple-system, Arial, sans-serif" font-size="30" fill="#c7cbd1">Ship your repo to your AI</text>
+  </g>
+  <!-- footer -->
+  <g fill="#a1a8b1" font-family="Inter, Segoe UI, system-ui, -apple-system, Arial, sans-serif" font-size="22">
+    <text x="560" y="410">Single file · Zero deps · JSON/JSONL snapshots</text>
+    <text x="560" y="446">paleae.com</text>
+  </g>
+</svg>

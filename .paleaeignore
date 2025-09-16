@@ -1,0 +1,20 @@
+# .paleaeignore
+# build & env noise
+build/** 
+dist/** 
+__pycache__/** 
+.venv/** 
+env/** 
+node_modules/**
+
+# reports and coverage
+.coverage* 
+htmlcov/** 
+coverage/** 
+reports/**
+
+# allowlist example
+!dist/README.md
+
+# Packaging artifacts
+*.egg-info/**

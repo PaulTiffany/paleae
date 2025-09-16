@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "paleae"
+version = "1.2.0"
+description = "Lightweight snapshot tool for codebases."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Paul Tiffany" }]
+
+[project.scripts]
+paleae = "paleae.paleae:main"
+
+[project.optional-dependencies]
+dev = [
+    "cosmic-ray",
+    "pydocstyle",
+    "pytest",
+    "mypy",
+    "ruff",
+    "hypothesis"
+]

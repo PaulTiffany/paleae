@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a0b0d"/>
+      <stop offset="1" stop-color="#15181c"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bg)"/>
+  <!-- Icon (wheat) in brand green -->
+  <g transform="translate(20,12)" fill="none" stroke="#5ee1a0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4v32"/>
+    <path d="M12 8L4 12"/>
+    <path d="M12 12L4 16"/>
+    <path d="M12 16L4 20"/>
+    <path d="M12 20L4 24"/>
+    <path d="M12 24L4 28"/>
+    <path d="M12 8L20 12"/>
+    <path d="M12 12L20 16"/>
+    <path d="M12 16L20 20"/>
+    <path d="M12 20L20 24"/>
+    <path d="M12 24L20 28"/>
+  </g>
+</svg>
