@@ -4,22 +4,58 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "paleae"
-version = "1.2.0"
-description = "Lightweight snapshot tool for codebases."
+dynamic = ["version"]
+description = "Lightweight snapshot tool for codebases. Harvest → Husk → Seed AI."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "Paul Tiffany" }]
+keywords = ["snapshot", "LLM", "AI", "JSON", "repository", "developer-tools", "metadata", "packaging", "utilities"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Software Development :: Build Tools",
+  "Topic :: Utilities"
+]
+# Paleae is zero-dependency at runtime; declare when/if that changes.
+dependencies = []
 
+[project.urls]
+Homepage = "https://paleae.com"
+Repository = "https://github.com/PaulTiffany/paleae"
+Issues = "https://github.com/PaulTiffany/paleae/issues"
+Documentation = "https://paleae.com"
+
+# Console script wired to the single-file module's CLI entrypoint.
 [project.scripts]
-paleae = "paleae.paleae:main"
+paleae = "paleae:cli_entrypoint"
 
+# Single-module layout (picks up paleae.py)
+[tool.setuptools]
+py-modules = ["paleae"]
+
+# Keep version single-sourced from paleae.__version__
+[tool.setuptools.dynamic]
+version = { attr = "paleae.__version__" }
+
+# Dev toolchain for CI and local hacking
 [project.optional-dependencies]
 dev = [
-    "cosmic-ray",
-    "pydocstyle",
-    "pytest",
-    "mypy",
-    "ruff",
-    "hypothesis"
+  "pytest>=8",
+  "mypy>=1.10",
+  "ruff>=0.5",
+  "hypothesis>=6",
+  "pydocstyle>=6.3",
+  "cosmic-ray>=8",
+  "build>=1.2.1",
+  "twine>=5.1.1"
 ]

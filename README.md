@@ -12,7 +12,6 @@
 </p>
 
 <p align="center">
-  <!-- TODO: Update username/repo in the CI badge URL -->
   <a href="https://github.com/PaulTiffany/paleae/actions/workflows/ci.yml">
     <img src="https://github.com/PaulTiffany/paleae/actions/workflows/ci.yml/badge.svg" alt="CI Status">
   </a>
