@@ -18,7 +18,11 @@ Older releases are generally unsupported unless the issue is severe and broadly 
 ## Reporting a Vulnerability
 
 **Preferred:** Use GitHub’s **Private Vulnerability Reporting** (Security → “Report a vulnerability”) on this repo.  
+<<<<<<< HEAD
 **Fallback:** Email **<replace-with-your-security-contact@example.com>** with the details.
+=======
+**Fallback:** Email **<paulctiffany@gmail.com>** with the details.
+>>>>>>> b5293cac74f97e86b6b3c4b149686bec7aa84542
 
 Please include:
 - Clear reproduction steps (commands, flags, input files if possible)
@@ -99,5 +103,9 @@ We are happy to discuss embargo timing if needed.
 
 ## Contact & Keys
 
+<<<<<<< HEAD
 - Security contact: **<replace-with-your-security-contact@example.com>**
+=======
+- Security contact: **<paulctiffany@gmail.com>**
+>>>>>>> b5293cac74f97e86b6b3c4b149686bec7aa84542
 - PGP key (optional): publish a fingerprint here if you require encrypted reports.
