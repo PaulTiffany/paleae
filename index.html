@@ -628,9 +628,24 @@
           <span class="badge" id="size-badge">~11KB</span>
         </div>
 
-        <div class="brand-row">
+        <div class="brand-row" role="group" aria-labelledby="paleae-flow-title">
           <img src="assets/paleae-mark.svg" alt="Paleae" width="28" height="28" class="mark">
-          <span class="flow">➜ 📁 ➜ 📊 ➜ 🤖</span>
+
+          <!-- Visual + accessible flow -->
+          <ol id="paleae-flow-title" class="flow" aria-label="Flow: Folder to Index to AI">
+            <li>
+              <span class="emoji" aria-hidden="true">📁</span>
+              <span class="mini-label">Folder</span>
+            </li>
+            <li>
+              <span class="emoji" aria-hidden="true">🗃️</span>
+              <span class="mini-label">Index</span>
+            </li>
+            <li>
+              <span class="emoji" aria-hidden="true">🤖</span>
+              <span class="mini-label">AI</span>
+            </li>
+          </ol>
         </div>
 
       </div>
