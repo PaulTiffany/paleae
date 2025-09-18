@@ -4,19 +4,19 @@ Thank you for your interest in contributing to Paleae! This project aims to make
 
 ## Quick Start
 
-1. **Fork and clone** the repository
-2. **Install dev dependencies**: `pip install -e .[dev]`  
-3. **Run tests**: `pytest` (should achieve 100% coverage)
-4. **Check code quality**: `ruff check . && mypy . && pydocstyle paleae.py`
+1. **Fork and clone** the [repository](https://github.com/PaulTiffany/paleae)
+2. **Install dev dependencies**: `pip install -e .[dev]` (see [`pyproject.toml`](./pyproject.toml) for details)
+3. **Run tests**: `pytest` (should achieve 100% coverage, enforced by [`pytest-cov`](https://pytest-cov.readthedocs.io/))
+4. **Check code quality**: `ruff check .` ([Ruff](https://docs.astral.sh/ruff/)), `mypy .` ([MyPy](https://mypy.readthedocs.io/)), `pydocstyle paleae.py` ([Pydocstyle](https://pydocstyle.readthedocs.io/))
 
 ## Development Philosophy
 
 Paleae follows these core principles:
 
-- **Single file, zero runtime dependencies** - Keep `paleae.py` self-contained
+- **Single file, zero runtime dependencies** - Keep [`paleae.py`](./paleae.py) self-contained
 - **Local-first** - No network calls, no external services
 - **Predictable behavior** - Deterministic output, clear error messages
-- **Comprehensive testing** - Property-based tests with Hypothesis, 100% coverage
+- **Comprehensive testing** - Property-based tests with [Hypothesis](https://hypothesis.readthedocs.io/), 100% coverage
 
 ## Types of Contributions
 
@@ -32,7 +32,7 @@ Paleae follows these core principles:
 
 ### Code Contributions
 - All changes require tests with full coverage maintained
-- Follow the existing code style (enforced by ruff)
+- Follow the existing code style (enforced by [Ruff](https://docs.astral.sh/ruff/))
 - Update documentation for user-facing changes
 
 ## Development Setup
@@ -52,6 +52,7 @@ pytest --cov=paleae --cov-branch --cov-report=term-missing
 ruff check .
 mypy .
 pydocstyle paleae.py
+bandit -r paleae.py # Security scan with [Bandit](https://bandit.readthedocs.io/)
 ```
 
 ## Testing Guidelines
@@ -59,7 +60,7 @@ pydocstyle paleae.py
 - **Unit tests**: Test individual functions with clear inputs/outputs
 - **Property-based tests**: Use Hypothesis for edge cases and invariants
 - **Integration tests**: Test complete workflows with temporary directories
-- **Coverage requirement**: 100% line and branch coverage
+- **Coverage requirement**: 100% line and branch coverage (enforced by [`pytest-cov`](https://pytest-cov.readthedocs.io/))
 
 Example test pattern:
 ```python
@@ -75,9 +76,9 @@ def test_feature_property(input_text):
 
 ## Code Style
 
-- **Line length**: 100 characters (configured in `.ruff.toml`)
-- **Type hints**: Required for all function signatures
-- **Docstrings**: Required for public functions (checked by pydocstyle)
+- **Line length**: 100 characters (configured in [`./.ruff.toml`](./.ruff.toml))
+- **Type hints**: Required for all function signatures (see [Python Typing](https://docs.python.org/3/library/typing.html))
+- **Docstrings**: Required for public functions (checked by [Pydocstyle](https://pydocstyle.readthedocs.io/))
 - **Error handling**: Use specific exceptions, avoid bare `except:`
 
 ## Making Changes
@@ -90,12 +91,13 @@ def test_feature_property(input_text):
 
 ## Pull Request Process
 
-1. **Run all checks locally**:
+1. **Run all checks locally**: The same checks run automatically on every pull request. You can view the full workflow definition [here](.github/workflows/ci.yml).
    ```bash
    pytest --cov=paleae --cov-branch
    ruff check .
    mypy .
    pydocstyle paleae.py
+   bandit -r paleae.py # Security scan
    ```
 
 2. **Update the version** in `paleae.py` and `pyproject.toml` if appropriate
@@ -118,4 +120,4 @@ Releases are handled by maintainers:
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the same MIT license that covers the project.
+By contributing, you agree that your contributions will be licensed under the same [MIT license](./LICENSE) that covers the project.
