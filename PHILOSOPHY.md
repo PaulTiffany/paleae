@@ -2,6 +2,8 @@
 
 Paleae embodies a simple conviction: **good tools should be predictable, transparent, and trustworthy**.
 
+This document outlines the core principles of the project. For detailed usage and configuration, please see the [Paleae Wiki](paleae.wiki/Home.md).
+
 ## Core Principles
 
 ### Single File, Zero Dependencies
@@ -36,11 +38,11 @@ The goal isn't to build the most feature-rich repository scanner. The goal is to
 
 Structured data beats clever formatting. JSON is universal, parseable, and future-proof. JSONL handles large repositories gracefully and streams naturally. Both formats work everywhere, with everything.
 
-Human-readable is important, but machine-parseable is essential.
+Human-readable is important, but machine-parseable is essential. See the [Output Format](paleae.wiki/Output-Format.md) guide for details.
 
 ### Why Regex Patterns Instead of Globs?
 
-Power users need precision. While `.paleaeignore` uses familiar glob syntax, the CLI accepts regex patterns for maximum flexibility. This dual approach serves both casual users and power users without compromise.
+Power users need precision. While `.paleaeignore` uses familiar glob syntax, the CLI accepts regex patterns for maximum flexibility. This dual approach serves both casual users and power users without compromise. This is explained in the [Configuration](paleae.wiki/Configuration.md) guide.
 
 ### Why SHA-256 Hashes?
 
@@ -50,7 +52,7 @@ Trust requires verification. Every file in the snapshot includes its SHA-256 has
 
 Configuration files create state. State creates complexity. Complexity breaks predictability.
 
-Paleae takes its instructions from command-line arguments and `.paleaeignore` files that live alongside your code. Everything else is convention and sensible defaults.
+Paleae takes its instructions from [command-line arguments](paleae.wiki/Usage-Guide.md) and [`.paleaeignore` files](paleae.wiki/Configuration.md) that live alongside your code. Everything else is convention and sensible defaults.
 
 ## What Paleae Is Not
 
@@ -65,7 +67,7 @@ Paleae takes its instructions from command-line arguments and `.paleaeignore` fi
 
 Your repository contains signal and noise, essential files and build artifacts, documentation and debris. Paleae helps you separate the grain from the chaff, creating clean snapshots that highlight what matters for AI analysis.
 
-Like traditional winnowing, this process requires judgment. That's why Paleae gives you precise control over what gets included and what gets filtered out.
+Like traditional winnowing, this process requires judgment. That's why Paleae gives you precise [filtering control](paleae.wiki/Configuration.md) over what gets included and what gets filtered out.
 
 ## Long-term Thinking
 
