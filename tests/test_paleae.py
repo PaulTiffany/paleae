@@ -459,7 +459,7 @@ def test_write_output_jsonl(tmp_path):
         {"path": "a.py", "content": "a"},
         {"path": "b.py", "content": "b"},
     ]
-    data = {"meta": {"tool": "paleae", "version": "1.2.0"}, "files": file_data}
+    data = {"meta": {"tool": "paleae", "version": "1.0.0"}, "files": file_data}
     paleae.write_output(out_path, data, "jsonl")
     lines = out_path.read_text().strip().split("\n")
 

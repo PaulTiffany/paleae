@@ -45,7 +45,7 @@ py-modules = ["paleae"]
 
 # Keep version single-sourced from paleae.__version__
 [tool.setuptools.dynamic]
-version = { attr = "paleae.__version__" }
+version = "1.0.0"
 
 # Dev toolchain for CI and local hacking
 [project.optional-dependencies]

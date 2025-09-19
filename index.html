@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- saved from url=(0049)file:///C:/Users/paulc/projects/paleae/index.html -->
+<html lang="en" data-theme="light"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Paleae – Ship your repo to your AI</title>
   <meta name="description" content="Single-file tool that snapshots your codebase into clean JSON/JSONL for AI analysis. Zero dependencies, local-only, predictable output.">
@@ -30,6 +30,34 @@
   <!-- IMPORTANT: Create a 1200x630 PNG version of your social card and place it in /assets/ -->
   <meta name="twitter:image" content="https://paleae.com/assets/paleae-social-card.png">
 
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://paleae.com/">
+
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Paleae",
+    "description": "A single-file Python tool that snapshots your codebase into clean JSON/JSONL for AI analysis, featuring zero dependencies and local-only processing.",
+    "applicationCategory": "DeveloperTool",
+    "operatingSystem": "Windows, macOS, Linux",
+    "softwareVersion": "1.0.0",
+    "url": "https://paleae.com/",
+    "author": {
+      "@type": "Person",
+      "name": "Paul Tiffany",
+      "url": "https://github.com/PaulTiffany"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "license": "https://github.com/PaulTiffany/paleae/blob/main/LICENSE"
+  }
+  </script>
+
   <style>
     :root {
       --bg: #0a0b0d;
@@ -37,6 +65,7 @@
       --muted: #a1a8b1;
       --line: #22262b;
       --accent: #5ee1a0;
+      --accent-fg: var(--accent); /* Default to the main accent color for text */
       --block: color-mix(in srgb, var(--fg) 4%, var(--bg));
       --glow: color-mix(in srgb, var(--accent) 15%, transparent);
       --radius: 16px;
@@ -73,6 +102,7 @@
       --fg: #0e1012;
       --muted: #646b74;
       --line: #e6e8eb;
+      --accent-fg: #18794e; /* Darker green for AA contrast on light backgrounds */
       --block: color-mix(in srgb, var(--fg) 4%, var(--bg));
       --glow: color-mix(in srgb, var(--accent) 8%, transparent);
       --shadow: 0 8px 32px rgba(0,0,0,.08);
@@ -337,7 +367,7 @@
       color: var(--fg);
     }
     .tab-btn.active {
-      color: var(--accent);
+      color: var(--accent-fg);
       border-bottom-color: var(--accent);
     }
     .tab-content {
@@ -569,9 +599,28 @@
     .download-status.show {
       opacity: 1;
     }
+
+    .skip-link {
+      position: absolute;
+      top: -100px; /* Hide it off-screen */
+      left: 10px;
+      background: var(--accent);
+      color: var(--bg, #0a0b0d); /* Fallback for safety */
+      padding: 12px 16px;
+      z-index: 200; /* Ensure it's on top of the sticky header */
+      border-radius: 0 0 8px 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: top 0.3s ease;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
   </style>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <header>
     <div class="container">
       <div class="header-content">
@@ -595,7 +644,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="main-content">
     <section class="hero">
       <div class="container">
         <h1>Ship your repo to your AI</h1>
@@ -610,7 +659,7 @@
             Download paleae.py
             <div class="download-status" id="download-status"></div>
           </button>
-          <a href="#quickstart" class="btn">
+          <a href="file:///C:/Users/paulc/projects/paleae/index.html#quickstart" class="btn">
             Get Started
           </a>
         </div>
@@ -624,12 +673,29 @@
           <span class="badge">LLM Context</span>
           <span class="badge">Python Tool</span>
           <span class="badge">JSON/JSONL Output</span>
-          <span class="badge" id="version-badge">v1.2.0</span>
+          <span class="badge" id="version-badge">v1.0.0</span>
           <span class="badge" id="size-badge">~11KB</span>
         </div>
 
         <div class="brand-row">
-          <img src="assets/paleae-mark.svg" alt="Paleae" width="28" height="28" class="mark">
+          <svg class="mark" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Paleae">
+            <g stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <!-- stem -->
+              <path d="M12 3v18"></path>
+              <!-- left leaves -->
+              <path d="M12 6L7.5 8"></path>
+              <path d="M12 9L7.5 11"></path>
+              <path d="M12 12L7.5 14"></path>
+              <path d="M12 15L7.5 17"></path>
+              <path d="M12 18L7.5 20"></path>
+              <!-- right leaves -->
+              <path d="M12 6L16.5 8"></path>
+              <path d="M12 9L16.5 11"></path>
+              <path d="M12 12L16.5 14"></path>
+              <path d="M12 15L16.5 17"></path>
+              <path d="M12 18L16.5 20"></path>
+            </g>
+          </svg>
 
           <!-- Read once as alt text; emojis hidden from ATs -->
           <span class="flow" role="img" aria-label="Flow: Folder to Index to AI">
@@ -649,32 +715,32 @@
         
         <div class="command-tabs">
           <div class="tab-nav">
-            <button class="tab-btn" data-target="#mac-linux">macOS / Linux</button>
-            <button class="tab-btn" data-target="#windows-cmd">Windows (cmd)</button>
-            <button class="tab-btn" data-target="#powershell">PowerShell</button>
+            <button class="tab-btn" data-target="#mac-linux" aria-selected="false">macOS / Linux</button>
+            <button class="tab-btn" data-target="#windows-cmd" aria-selected="false">Windows (cmd)</button>
+            <button class="tab-btn active" data-target="#powershell" aria-selected="true">PowerShell</button>
           </div>
           
           <div id="mac-linux" class="tab-content">
             <div class="command-demo">
               <div class="command-line-wrapper">
-                <pre class="command-line-container"><code class="command-line">curl -fsSL https://raw.githubusercontent.com/PaulTiffany/paleae/main/paleae.py -o paleae.py && python3 paleae.py</code></pre>
+                <pre class="command-line-container"><code class="command-line">curl -fsSL https://raw.githubusercontent.com/PaulTiffany/paleae/main/paleae.py -o paleae.py &amp;&amp; python3 paleae.py</code></pre>
                 <button class="copy-btn" data-copy-target="#mac-linux .command-line">Copy</button>
               </div>
               <p class="command-note" style="text-align: center; width: fit-content; margin: 24px auto 0 auto;">Uses <code>python3</code> to ensure a modern version of Python is used, as <code>python</code> may point to an older version on these systems.</p>
             </div>
           </div>
           
-          <div id="windows-cmd" class="tab-content">
+          <div id="windows-cmd" class="tab-content" role="tabpanel" aria-labelledby="tab-windows-cmd">
             <div class="command-demo">
               <div class="command-line-wrapper">
-                <pre class="command-line-container"><code class="command-line">curl -fsSL https://raw.githubusercontent.com/PaulTiffany/paleae/main/paleae.py -o paleae.py && python paleae.py</code></pre>
+                <pre class="command-line-container"><code class="command-line">curl -fsSL https://raw.githubusercontent.com/PaulTiffany/paleae/main/paleae.py -o paleae.py &amp;&amp; python paleae.py</code></pre>
                 <button class="copy-btn" data-copy-target="#windows-cmd .command-line">Copy</button>
               </div>
               <p class="command-note" style="text-align: center; width: fit-content; margin: 24px auto 0 auto;">For Windows 10/11. Double-clickable <code>paleae.py</code> </p>
             </div>
           </div>
 
-          <div id="powershell" class="tab-content">
+          <div id="powershell" class="tab-content active">
             <div class="command-demo">
               <div class="command-line-wrapper">
                 <pre class="command-line-container"><code class="command-line">Invoke-WebRequest -Uri https://raw.githubusercontent.com/PaulTiffany/paleae/main/paleae.py -OutFile paleae.py; python paleae.py</code></pre>
@@ -695,35 +761,35 @@
         </div>
         
         <div class="grid">
-          <div class="card">
+          <article class="card">
             <h3>Single File Architecture</h3>
             <p>One file contains everything. No hidden dependencies, no package complexity. You can read every line of code and know exactly what it does.</p>
-          </div>
+          </article>
           
-          <div class="card">
+          <article class="card">
             <h3>Local-Only Processing</h3>
             <p>Your code never leaves your machine. No network calls during scanning, no telemetry, no data collection. Your repositories remain private.</p>
-          </div>
+          </article>
           
-          <div class="card">
+          <article class="card">
             <h3>Deterministic Output</h3>
             <p>Same input always produces identical output. File hashes verify integrity. Predictable behavior you can rely on in automated workflows.</p>
-          </div>
+          </article>
           
-          <div class="card">
+          <article class="card">
             <h3>Smart Filtering</h3>
             <p>Allows customizable <a href="https://raw.githubusercontent.com/PaulTiffany/paleae/main/.paleaeignore" download=".paleaeignore" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">.paleaeignore</a> with glob patterns and negation (!). CLI accepts regex patterns for power users. Skip build artifacts, keep what matters.</p>
-          </div>
+          </article>
           
-          <div class="card">
+          <article class="card">
             <h3>AI-Optimized Format</h3>
             <p>Clean JSON/JSONL output with metadata, file hashes, and token estimates. Structured data that LLMs can parse and analyze effectively.</p>
-          </div>
+          </article>
           
-          <div class="card">
+          <article class="card">
             <h3>Sustainable Design</h3>
             <p>No feature creep, no breaking changes. Tools should solve problems, not create them.</p>
-          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -763,8 +829,8 @@
             
             <div class="principle">
               <h4>Insta-Click Examples</h4>
-              <p>Curious about `paleae`'s output? Download a sample JSON snapshot from our examples folder.</p>
-              <p><a href="https://raw.githubusercontent.com/PaulTiffany/paleae/main/examples/paleae.json" download="paleae.json" style="color: var(--accent); text-decoration: underline;">Download paleae.json example</a></p>
+              <p>Curious about `paleae`'s output? Download a JSON snapshot of the repository from our <a href="https://github.com/PaulTiffany/paleae/examples" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">examples</a> folder.</p>
+              <p><a href="https://raw.githubusercontent.com/PaulTiffany/paleae/main/examples/paleae.json" download="paleae.json" style="color: var(--accent); text-decoration: underline;">paleae.json</a></p>
             </div>
           </div>
         </div>
@@ -890,12 +956,23 @@
       const platform = navigator.platform.toLowerCase();
 
       tabButtons.forEach(button => {
+        button.setAttribute('aria-selected', 'false'); // Initialize all to false
         button.addEventListener('click', () => {
-          tabButtons.forEach(btn => btn.classList.remove('active'));
-          button.classList.add('active');
+          // Deactivate all tabs
+          tabButtons.forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-selected', 'false');
+          });
           
-          const targetContent = tabContainer.querySelector(button.dataset.target);
+          // Activate the clicked tab
+          button.classList.add('active');
+          button.setAttribute('aria-selected', 'true');
+          
+          // Hide all tab panels
           tabContents.forEach(content => content.classList.remove('active'));
+          
+          // Show the target tab panel
+          const targetContent = tabContainer.querySelector(button.dataset.target);
           if (targetContent) {
             targetContent.classList.add('active');
           }
@@ -903,10 +980,17 @@
       });
 
       // Auto-select tab based on OS
+      let initialTab;
       if (platform.includes('win')) {
-        document.querySelector('.tab-btn[data-target="#windows-cmd"]').click();
+        initialTab = document.querySelector('.tab-btn[data-target="#windows-cmd"]');
       } else {
-        document.querySelector('.tab-btn[data-target="#mac-linux"]').click();
+        initialTab = document.querySelector('.tab-btn[data-target="#mac-linux"]');
+      }
+      
+      if (initialTab) {
+        initialTab.click();
+      } else if (tabButtons.length > 0) {
+        tabButtons[0].click(); // Fallback to the first tab
       }
     }
 
@@ -926,5 +1010,6 @@
 
     
   </script>
-</body>
-</html>
+
+
+</body></html>

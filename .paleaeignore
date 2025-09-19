@@ -18,3 +18,17 @@ reports/**
 
 # Packaging artifacts
 *.egg-info/**
+
+# Secrets & credentials
+.env
+*.pem
+*.key
+id_rsa
+id_ed25519
+.aws/**
+.gcloud/**
+.azure/**
+**/credentials/**
+**/*secret*
+**/*password*
+**/*token*

@@ -56,6 +56,12 @@ This will create a `repo_snapshot.json` file in your current directory.
 
 We welcome contributions! If you're interested in helping improve Paleae, please read our comprehensive [Contributing Guide](./CONTRIBUTING.md) for details on setting up your development environment, running tests, and submitting pull requests.
 
+### Privacy & Safety (30s)
+- Runs locally in read-only mode. No execution. No network.
+- Skips binaries, huge files (>10 MB), VCS/caches, and `.env` by default.
+- Add a `.paleaeignore` to exclude anything sensitive.
+- You are responsible for what you share—review the JSON before uploading.
+
 ## Usage
 
 ```
@@ -122,7 +128,7 @@ The snapshot contains metadata and a list of file objects.
 {
   "meta": {
     "tool": "paleae",
-    "version": "1.2.0",
+    "version": "1.0.0",
     "timestamp": "2025-09-16T20:00:00Z",
     "root_directory": "/path/to/your/project",
     "summary": {
