@@ -57,5 +57,8 @@ dev = [
   "pydocstyle>=6.3",
   "cosmic-ray>=8",
   "build>=1.2.1",
-  "twine>=5.1.1"
+  "twine>=5.1.1",
+  "sphinx>=7.0",
+  "myst-parser>=2.0",
+  "sphinxcontrib-mermaid"
 ]

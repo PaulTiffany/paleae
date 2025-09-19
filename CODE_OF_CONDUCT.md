@@ -2,7 +2,7 @@
 
 ## Our Commitment
 
-We are committed to providing a welcoming and constructive environment for all contributors to the Paleae project, regardless of experience level, background, or identity.
+We are committed to providing a welcoming and constructive environment for all contributors to the Paleae project, regardless of experience level, background, or identity. This commitment extends to ensuring our tools and resources are accessible to everyone. Please refer to our [[ACCESSIBILITY.md]](./ACCESSIBILITY.md) for more details on our accessibility guidelines.
 
 ## Expected Behavior
 

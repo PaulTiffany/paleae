@@ -7,6 +7,5 @@ settings.register_profile(
     suppress_health_check=[HealthCheck.too_slow],
     derandomize=False,
     print_blob=True,
-    
 )
 settings.load_profile("ci")

@@ -18,10 +18,29 @@ jobs:
       with:
         python-version: '3.11'
 
+    - name: Cache Python dependencies
+      uses: actions/cache@v4
+      with:
+        path: |-
+          ~/.cache/pip
+          .venv
+        key: ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('./paleae/pyproject.toml') }}
+        restore-keys: |-
+          ${{ runner.os }}-python-${{ steps.setup-python.outputs.python-version }}-
+          ${{ runner.os }}-python-
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -e .[dev]
+
+    - name: Security scan with bandit
+      run: |
+        bandit -r paleae.py
+
+    - name: Check code formatting with ruff
+      run: |
+        ruff format --check .
 
     - name: Lint with ruff
       run: |
@@ -35,6 +54,13 @@ jobs:
       run: |
         pydocstyle paleae.py
 
-    - name: Test with pytest
+    - name: Test with pytest and coverage
       run: |
-        pytest
+        pytest --cov=paleae --cov-report=xml --cov-report=term-missing
+        pytest --cov=paleae --cov-fail-under=80
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        slug: PaulTiffany/paleae

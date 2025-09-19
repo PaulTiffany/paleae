@@ -11,6 +11,7 @@ paleae - Create JSON/JSONL snapshots of your repository for LLMs.
 A single-file, zero-dependency tool that scans your codebase and creates
 structured snapshots optimized for AI analysis and processing.
 """
+
 import argparse
 import fnmatch
 import hashlib
@@ -22,7 +23,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 # Project metadata (also embedded in output)
-__version__ = "1.2.0" # Version bump for ignore negation feature
+__version__ = "1.2.0"  # Version bump for ignore negation feature
 __license__ = "MIT"
 __website__ = "https://paleae.com"
 __source__ = "https://github.com/PaulTiffany/paleae"
@@ -32,10 +33,36 @@ MAX_SIZE = 10 * 1024 * 1024  # 10MB
 PALEAEIGNORE = ".paleaeignore"
 
 TEXT_EXTS = {
-    ".py", ".md", ".rst", ".txt", ".json", ".yaml", ".yml", ".toml", ".ini",
-    ".cfg", ".xml", ".csv", ".tsv", ".html", ".css", ".js", ".ts", ".tsx",
-    ".c", ".h", ".cpp", ".hpp", ".java", ".kt", ".go", ".rs", ".rb", ".php",
-    ".sh", ".ps1"
+    ".py",
+    ".md",
+    ".rst",
+    ".txt",
+    ".json",
+    ".yaml",
+    ".yml",
+    ".toml",
+    ".ini",
+    ".cfg",
+    ".xml",
+    ".csv",
+    ".tsv",
+    ".html",
+    ".css",
+    ".js",
+    ".ts",
+    ".tsx",
+    ".c",
+    ".h",
+    ".cpp",
+    ".hpp",
+    ".java",
+    ".kt",
+    ".go",
+    ".rs",
+    ".rb",
+    ".php",
+    ".sh",
+    ".ps1",
 }
 
 DEFAULT_SKIP = [
@@ -49,7 +76,7 @@ DEFAULT_SKIP = [
     r"(^|/)htmlcov($|/)",
     r"(^|/)\.coverage($|/)?",
     r"(^|/)\.env($|/)",
-    r"(^|/)" + re.escape(PALEAEIGNORE) + r"($|/)?", # Ignore our own config file
+    r"(^|/)" + re.escape(PALEAEIGNORE) + r"($|/)?",  # Ignore our own config file
 ]
 
 PROFILES = {
@@ -61,18 +88,21 @@ PROFILES = {
             r"^README(\.md|\.rst)?$",
             r"^(ROADMAP|CHANGELOG)\.md$",
         ],
-        "exclude": DEFAULT_SKIP + [r"(^|/)docs/"]
+        "exclude": DEFAULT_SKIP + [r"(^|/)docs/"],
     },
 }
 
 # --- Core Logic ---
 
+
 class PaleaeError(Exception):
     """Base exception for paleae operations."""
+
 
 def token_estimate(text: str) -> int:
     """Estimate tokens using 4-char heuristic."""
     return max(1, len(text) // 4) if text else 0
+
 
 def is_text_file(path: Path) -> bool:
     """Check if file should be treated as text."""
@@ -93,6 +123,7 @@ def is_text_file(path: Path) -> bool:
     except (OSError, UnicodeDecodeError, PermissionError):
         return False
 
+
 def _translate_globs_to_regex(globs: list[str]) -> list[str]:
     """Translate shell globs to regex strings with normalization."""
     regex_list: list[str] = []
@@ -103,6 +134,7 @@ def _translate_globs_to_regex(globs: list[str]) -> list[str]:
         # fnmatch.translate handles **, *, ?, and char classes
         regex_list.append(fnmatch.translate(line))
     return regex_list
+
 
 def read_paleaeignore(root: Path) -> tuple[list[str], list[str]]:
     """Return (positive_globs, negative_globs) from .paleaeignore."""
@@ -125,6 +157,7 @@ def read_paleaeignore(root: Path) -> tuple[list[str], list[str]]:
         print(f"Warning: Could not read {PALEAEIGNORE}", file=sys.stderr)
     return pos, neg
 
+
 def compile_patterns(patterns: Optional[list[str]]) -> list[re.Pattern[str]]:
     """Compile regex patterns with error handling."""
     if not patterns:
@@ -137,21 +170,23 @@ def compile_patterns(patterns: Optional[list[str]]) -> list[re.Pattern[str]]:
             raise PaleaeError(f"Invalid regex '{pattern}': {e}") from e
     return compiled
 
+
 def matches_any(text: str, patterns: list[re.Pattern[str]]) -> bool:
     """Check if text matches any pattern."""
     return any(p.search(text) for p in patterns)
+
 
 def collect_files(
     root: Path,
     inc_patterns: list[re.Pattern[str]],
     exc_patterns: list[re.Pattern[str]],
     ign_pos_patterns: list[re.Pattern[str]],
-    ign_neg_patterns: list[re.Pattern[str]]
+    ign_neg_patterns: list[re.Pattern[str]],
 ) -> list[str]:
     """Collect files matching all filter criteria."""
     if not root.is_dir():
         raise PaleaeError(f"Directory not found: {root}")
-    
+
     files = []
     try:
         for path in root.rglob("*"):
@@ -163,8 +198,9 @@ def collect_files(
                 continue
 
             # Step 1: Check if the path is excluded by default, CLI, or .paleaeignore
-            is_excluded = (matches_any(rel_path, exc_patterns) or 
-                           matches_any(rel_path, ign_pos_patterns))
+            is_excluded = matches_any(rel_path, exc_patterns) or matches_any(
+                rel_path, ign_pos_patterns
+            )
 
             # Step 2: A negative pattern (!) in .paleaeignore overrides any exclusion
             if is_excluded and matches_any(rel_path, ign_neg_patterns):
@@ -183,6 +219,7 @@ def collect_files(
         raise PaleaeError(f"Error traversing {root}: {e}") from e
     return sorted(files)
 
+
 def build_snapshot(root: Path, rel_files: list[str], ignore_meta: dict[str, Any]) -> dict[str, Any]:
     """Build complete snapshot data, including metadata."""
     files_data, total_chars, total_tokens = [], 0, 0
@@ -197,31 +234,37 @@ def build_snapshot(root: Path, rel_files: list[str], ignore_meta: dict[str, Any]
 
         chars = len(content)
         tokens = token_estimate(content)
-        files_data.append({
-            "path": rel_path,
-            "content": content,
-            "size_chars": chars,
-            "sha256": hashlib.sha256(content.encode("utf-8", errors="ignore")).hexdigest(),
-            "estimated_tokens": tokens,
-        })
+        files_data.append(
+            {
+                "path": rel_path,
+                "content": content,
+                "size_chars": chars,
+                "sha256": hashlib.sha256(content.encode("utf-8", errors="ignore")).hexdigest(),
+                "estimated_tokens": tokens,
+            }
+        )
         total_chars += chars
         total_tokens += tokens
-        
+
     return {
         "meta": {
-            "tool": "paleae", "version": __version__, "license": __license__,
-            "website": __website__, "source": __source__,
+            "tool": "paleae",
+            "version": __version__,
+            "license": __license__,
+            "website": __website__,
+            "source": __source__,
             "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
             "root_directory": str(root),
             "ignore_file": ignore_meta,
             "summary": {
                 "total_files": len(files_data),
                 "total_chars": total_chars,
-                "estimated_tokens": total_tokens
-            }
+                "estimated_tokens": total_tokens,
+            },
         },
-        "files": files_data
+        "files": files_data,
     }
+
 
 def write_output(path: Path, data: dict[str, Any], format: str) -> None:
     """Write data as JSON or JSONL file."""
@@ -230,7 +273,7 @@ def write_output(path: Path, data: dict[str, Any], format: str) -> None:
         if format == "json":
             content = json.dumps(data, indent=2, ensure_ascii=False)
             path.write_text(content, encoding="utf-8")
-        else: # jsonl
+        else:  # jsonl
             with path.open("w", encoding="utf-8") as f:
                 f.write(json.dumps({"type": "meta", **data["meta"]}, ensure_ascii=False) + "\n")
                 for row in data["files"]:
@@ -238,46 +281,38 @@ def write_output(path: Path, data: dict[str, Any], format: str) -> None:
     except (OSError, PermissionError) as e:
         raise PaleaeError(f"Error writing {path}: {e}") from e
 
+
 # --- CLI and Main Execution ---
+
 
 def create_parser() -> argparse.ArgumentParser:
     """Create CLI argument parser."""
-    parser = argparse.ArgumentParser(
-        description="Create JSON/JSONL snapshot of your repo for LLMs"
-    )
+    parser = argparse.ArgumentParser(description="Create JSON/JSONL snapshot of your repo for LLMs")
     parser.add_argument(
         "directory", nargs="?", default=".", help="Directory to snapshot (default: .)"
     )
-    parser.add_argument(
-        "-o", "--out", help="Output file (auto-named if not specified)"
-    )
+    parser.add_argument("-o", "--out", help="Output file (auto-named if not specified)")
     parser.add_argument(
         "-f", "--format", choices=["json", "jsonl"], default="json", help="Output format"
     )
     parser.add_argument(
-        "--profile", choices=list(PROFILES.keys()), default="minimal",
-        help="File inclusion profile"
+        "--profile", choices=list(PROFILES.keys()), default="minimal", help="File inclusion profile"
     )
-    parser.add_argument(
-        "--include", action="append", help="Extra include regex (repeatable)"
-    )
-    parser.add_argument(
-        "--exclude", action="append", help="Extra exclude regex (repeatable)"
-    )
+    parser.add_argument("--include", action="append", help="Extra include regex (repeatable)")
+    parser.add_argument("--exclude", action="append", help="Extra exclude regex (repeatable)")
     parser.add_argument("--version", action="version", version=f"paleae {__version__}")
     parser.add_argument("--about", action="store_true", help="Show project info and exit")
     return parser
 
-def main() -> int: # noqa: PLR0911
+
+def main() -> int:  # noqa: PLR0911
     """Run the main entry point."""
     parser = create_parser()
     args = parser.parse_args()
 
     if args.about:
         print(
-            f"paleae {__version__} ({__license__})\n"
-            f"Website: {__website__}\n"
-            f"Source:  {__source__}"
+            f"paleae {__version__} ({__license__})\nWebsite: {__website__}\nSource:  {__source__}"
         )
         return 0
 
@@ -334,9 +369,11 @@ def main() -> int: # noqa: PLR0911
         print(f"Unexpected error: {e}", file=sys.stderr)
         return 1
 
+
 def cli_entrypoint() -> None:
     """Console entry point (kept tiny so tests can patch sys.exit)."""
     sys.exit(main())
+
 
 if __name__ == "__main__":
     cli_entrypoint()

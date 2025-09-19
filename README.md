@@ -52,6 +52,10 @@ python paleae.py
 
 This will create a `repo_snapshot.json` file in your current directory.
 
+## Contributing
+
+We welcome contributions! If you're interested in helping improve Paleae, please read our comprehensive [Contributing Guide](./CONTRIBUTING.md) for details on setting up your development environment, running tests, and submitting pull requests.
+
 ## Usage
 
 ```
