@@ -12,7 +12,7 @@ license = { text = "MIT" }
 authors = [{ name = "Paul Tiffany" }]
 keywords = ["snapshot", "LLM", "AI", "JSON", "repository", "developer-tools", "metadata", "packaging", "utilities"]
 classifiers = [
-  "Development Status :: 4 - Beta",
+  "Development Status :: 5 - Production/Stable",
   "Environment :: Console",
   "Intended Audience :: Developers",
   "License :: OSI Approved :: MIT License",

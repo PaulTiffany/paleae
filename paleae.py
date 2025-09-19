@@ -23,7 +23,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 # Project metadata (also embedded in output)
-__version__ = "1.2.0"  # Version bump for ignore negation feature
+__version__ = "1.0.0"
 __license__ = "MIT"
 __website__ = "https://paleae.com"
 __source__ = "https://github.com/PaulTiffany/paleae"

@@ -42,7 +42,7 @@ This creates a `repo_snapshot.json` file that looks like this (simplified):
 {
   "meta": {
     "tool": "paleae",
-    "version": "1.2.0",
+    "version": "1.0.0",
     "summary": {
       "total_files": 5,
       "estimated_tokens": 2560
