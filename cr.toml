@@ -1,9 +1,18 @@
 [cosmic-ray]
+# Mutate ONLY the importable module "paleae" (i.e., paleae.py at repo root)
 module = "paleae"
-timeout = 10.0
-excluded-modules = ["tests*"]
 module-path = "."
-test-command = "paleae/.venv/Scripts/python.exe -m pytest -q"
+timeout = 10.0
+
+# Never mutate tests or docs
+excluded-modules = ["tests*", "tests.*", "docs*", "docs.*"]
+
+# Use a lighter Hypothesis profile for mutation runs and fail fast on first failing test
+# (Windows syntax). If you're on macOS/Linux, see the comment below.
+test-command = "cmd /c \"set HYPOTHESIS_PROFILE=mutation && pytest -q --maxfail=1 --no-header --no-summary -p no:warnings\""
+
+# On macOS/Linux, swap the line above for:
+# test-command = "HYPOTHESIS_PROFILE=mutation pytest -q --maxfail=1 --no-header --no-summary -p no:warnings"
 
 [execution]
 engine = "local"

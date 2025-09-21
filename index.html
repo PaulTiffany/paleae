@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<!-- saved from url=(0049)file:///C:/Users/paulc/projects/paleae/index.html -->
 <html lang="en" data-theme="light"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Paleae – Ship your repo to your AI</title>
-  <meta name="description" content="Single-file tool that snapshots your codebase into clean JSON/JSONL for AI analysis. Zero dependencies, local-only, predictable output.">
+  <title>Paleae — Ship your repo to your AI</title>
+  <meta name="description" content="Single-file tool that snapshots your codebase into clean JSON/JSONL. Your codebase, optimized for AI understanding. Zero dependencies, local-only, predictable output.">
   <meta name="theme-color" content="#0a0b0d">
 
   <!-- Favicon -->
@@ -14,20 +13,18 @@
   <link rel="manifest" href="https://paleae.com/assets/site.webmanifest">
 
   <!-- Social -->
-  <meta property="og:title" content="Paleae – Ship your repo to your AI">
+  <meta property="og:title" content="Paleae — Ship your repo to your AI">
   <meta property="og:description" content="Single file. Zero deps. JSON/JSONL snapshots. Local-only tool for AI-ready codebase analysis.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://paleae.com/">
-  <!-- IMPORTANT: Create a 1200x630 PNG version of your social card and place it in /assets/ -->
   <meta property="og:image" content="https://paleae.com/assets/paleae-social-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@PaulTiffany">
   <meta name="twitter:creator" content="@PaulTiffany">
-  <meta name="twitter:title" content="Paleae – Ship your repo to your AI">
+  <meta name="twitter:title" content="Paleae — Ship your repo to your AI">
   <meta name="twitter:description" content="Single file. Zero deps. JSON/JSONL snapshots. Local-only tool for AI-ready codebase analysis.">
-  <!-- IMPORTANT: Create a 1200x630 PNG version of your social card and place it in /assets/ -->
   <meta name="twitter:image" content="https://paleae.com/assets/paleae-social-card.png">
 
   <!-- Canonical URL -->
@@ -65,7 +62,7 @@
       --muted: #a1a8b1;
       --line: #22262b;
       --accent: #5ee1a0;
-      --accent-fg: var(--accent); /* Default to the main accent color for text */
+      --accent-fg: var(--accent);
       --block: color-mix(in srgb, var(--fg) 4%, var(--bg));
       --glow: color-mix(in srgb, var(--accent) 15%, transparent);
       --radius: 16px;
@@ -102,7 +99,7 @@
       --fg: #0e1012;
       --muted: #646b74;
       --line: #e6e8eb;
-      --accent-fg: #18794e; /* Darker green for AA contrast on light backgrounds */
+      --accent-fg: #18794e;
       --block: color-mix(in srgb, var(--fg) 4%, var(--bg));
       --glow: color-mix(in srgb, var(--accent) 8%, transparent);
       --shadow: 0 8px 32px rgba(0,0,0,.08);
@@ -349,10 +346,14 @@
       max-width: 1337px;
       margin: 0 auto;
     }
+    
     .tab-nav {
       display: flex;
       justify-content: center;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 24px;
     }
+    
     .tab-btn {
       padding: 12px 24px;
       cursor: pointer;
@@ -361,78 +362,113 @@
       color: var(--muted);
       font-size: 16px;
       border-bottom: 2px solid transparent;
-      transition: 0.2s;
+      transition: all 0.2s ease;
+      position: relative;
     }
+    
     .tab-btn:hover {
       color: var(--fg);
+      background: color-mix(in srgb, var(--accent) 5%, transparent);
     }
+    
     .tab-btn.active {
       color: var(--accent-fg);
       border-bottom-color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 8%, transparent);
     }
+    
     .tab-content {
       display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
+    
     .tab-content.active {
       display: block;
+      opacity: 1;
     }
+    
     .command-demo {
-      padding: 32px 0;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 0;
     }
+    
     .command-line-wrapper {
       position: relative;
+      background: color-mix(in srgb, var(--fg) 5%, var(--bg));
+      border-radius: 8px;
+      padding: 16px;
+      border: 1px solid color-mix(in srgb, var(--line) 50%, transparent);
     }
+    
     .command-line-container {
       font-family: ui-monospace, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
-      font-size: 16px;
+      font-size: 14px;
       color: var(--accent);
       margin: 0;
       white-space: pre-wrap;
       word-break: break-all;
       padding-right: 70px;
+      line-height: 1.4;
     }
+    
     .command-line {
       font-family: inherit;
       font-size: inherit;
+      background: none;
+      border: none;
+      color: inherit;
     }
 
     .copy-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      right: 0;
-      background: var(--bg);
+      right: 16px;
+      background: var(--block);
       border: 1px solid var(--line);
       color: var(--muted);
-      border-radius: 8px;
-      padding: 6px 10px;
+      border-radius: 6px;
+      padding: 6px 12px;
       font-size: 12px;
       cursor: pointer;
-      transition: 0.2s;
-      opacity: 0.2;
+      transition: all 0.2s ease;
+      opacity: 0.7;
+      font-weight: 500;
     }
+    
     .command-line-wrapper:hover .copy-btn {
       opacity: 1;
     }
+    
     .copy-btn:hover {
       color: var(--fg);
-      background: var(--block);
-      opacity: 1;
+      background: color-mix(in srgb, var(--accent) 10%, var(--block));
+      border-color: color-mix(in srgb, var(--accent) 30%, var(--line));
+      transform: translateY(-50%) scale(1.05);
     }
+    
     .command-note {
       font-size: 13px;
       color: var(--muted);
-      background: var(--block);
+      background: color-mix(in srgb, var(--fg) 3%, var(--bg));
       padding: 12px 16px;
-      border-radius: var(--radius);
-      margin: 24px 0 0 0;
-      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin: 16px 0 0 0;
+      border: 1px solid color-mix(in srgb, var(--line) 50%, transparent);
+      text-align: center;
     }
+    
     .command-note code {
-      background: color-mix(in srgb, var(--fg) 10%, var(--bg));
+      background: color-mix(in srgb, var(--fg) 8%, var(--bg));
       padding: 2px 6px;
       border-radius: 4px;
       font-size: 12px;
+      color: var(--accent-fg);
+      font-weight: 500;
     }
 
     .features {
@@ -578,12 +614,29 @@
         padding: 14px 20px;
       }
       .command-demo {
-        padding: 20px;
-        margin: 0 16px;
+        padding: 16px;
+      }
+      .tab-nav {
+        flex-wrap: wrap;
+      }
+      .tab-btn {
+        flex: 1;
+        min-width: 120px;
+        padding: 10px 16px;
+        font-size: 14px;
+      }
+      .command-line-container {
+        font-size: 12px;
+        padding-right: 60px;
+      }
+      .copy-btn {
+        padding: 4px 8px;
+        font-size: 11px;
+        right: 12px;
       }
     }
 
-    .btn:focus-visible, .theme-btn:focus-visible, .copy-btn:focus-visible {
+    .btn:focus-visible, .theme-btn:focus-visible, .copy-btn:focus-visible, .tab-btn:focus-visible {
       outline: 2px solid var(--accent);
       outline-offset: 2px;
     }
@@ -602,12 +655,12 @@
 
     .skip-link {
       position: absolute;
-      top: -100px; /* Hide it off-screen */
+      top: -100px;
       left: 10px;
       background: var(--accent);
-      color: var(--bg, #0a0b0d); /* Fallback for safety */
+      color: var(--bg, #0a0b0d);
       padding: 12px 16px;
-      z-index: 200; /* Ensure it's on top of the sticky header */
+      z-index: 200;
       border-radius: 0 0 8px 8px;
       font-weight: 600;
       text-decoration: none;
@@ -649,9 +702,10 @@
       <div class="container">
         <h1>Ship your repo to your AI</h1>
         <p class="subtitle">
-          Paleae snapshots your codebase into clean JSON/JSONL—perfect for AI analysis. 
-          Single file, zero dependencies, local-only processing.
+          Paleae snapshots your codebase into clean JSON/JSONL. Single file, zero dependencies, local-only processing.
         </p>
+
+        <h2>Your codebase, optimized for AI understanding</h2>
         
         <div class="cta-group">
           <button class="btn primary" id="download-btn">
@@ -659,7 +713,7 @@
             Download paleae.py
             <div class="download-status" id="download-status"></div>
           </button>
-          <a href="file:///C:/Users/paulc/projects/paleae/index.html#quickstart" class="btn">
+          <a href="#quickstart" class="btn">
             Get Started
           </a>
         </div>
@@ -680,15 +734,12 @@
         <div class="brand-row">
           <svg class="mark" width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Paleae">
             <g stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <!-- stem -->
               <path d="M12 3v18"></path>
-              <!-- left leaves -->
               <path d="M12 6L7.5 8"></path>
               <path d="M12 9L7.5 11"></path>
               <path d="M12 12L7.5 14"></path>
               <path d="M12 15L7.5 17"></path>
               <path d="M12 18L7.5 20"></path>
-              <!-- right leaves -->
               <path d="M12 6L16.5 8"></path>
               <path d="M12 9L16.5 11"></path>
               <path d="M12 12L16.5 14"></path>
@@ -696,13 +747,10 @@
               <path d="M12 18L16.5 20"></path>
             </g>
           </svg>
-
-          <!-- Read once as alt text; emojis hidden from ATs -->
           <span class="flow" role="img" aria-label="Flow: Folder to Index to AI">
-            <span aria-hidden="true">➜ 📁 ➜ 🗃️ ➜ 🤖</span>
+            <span aria-hidden="true">📁 → 🗃️ → 🤖</span>
           </span>
         </div>
-
       </div>
     </section>
 
@@ -714,39 +762,39 @@
         </div>
         
         <div class="command-tabs">
-          <div class="tab-nav">
-            <button class="tab-btn" data-target="#mac-linux" aria-selected="false">macOS / Linux</button>
-            <button class="tab-btn" data-target="#windows-cmd" aria-selected="false">Windows (cmd)</button>
-            <button class="tab-btn active" data-target="#powershell" aria-selected="true">PowerShell</button>
+          <div class="tab-nav" role="tablist">
+            <button class="tab-btn" id="tab-mac-linux" data-target="mac-linux" role="tab" aria-controls="mac-linux" aria-selected="false">macOS / Linux</button>
+            <button class="tab-btn" id="tab-windows-cmd" data-target="windows-cmd" role="tab" aria-controls="windows-cmd" aria-selected="false">Windows (cmd)</button>
+            <button class="tab-btn" id="tab-powershell" data-target="powershell" role="tab" aria-controls="powershell" aria-selected="false">PowerShell</button>
           </div>
           
-          <div id="mac-linux" class="tab-content">
+          <div id="mac-linux" class="tab-content" role="tabpanel" aria-labelledby="tab-mac-linux">
             <div class="command-demo">
               <div class="command-line-wrapper">
-                <pre class="command-line-container"><code class="command-line">curl -fsSL https://raw.githubusercontent.com/PaulTiffany/paleae/main/paleae.py -o paleae.py &amp;&amp; python3 paleae.py</code></pre>
+                <pre class="command-line-container"><code class="command-line">curl -fsSL https://raw.githubusercontent.com/PaulTiffany/paleae/main/paleae.py -o paleae.py && python3 paleae.py</code></pre>
                 <button class="copy-btn" data-copy-target="#mac-linux .command-line">Copy</button>
               </div>
-              <p class="command-note" style="text-align: center; width: fit-content; margin: 24px auto 0 auto;">Uses <code>python3</code> to ensure a modern version of Python is used, as <code>python</code> may point to an older version on these systems.</p>
+              <div class="command-note">Uses <code>python3</code> to ensure a modern version of Python is used, as <code>python</code> may point to an older version on these systems.</div>
             </div>
           </div>
           
           <div id="windows-cmd" class="tab-content" role="tabpanel" aria-labelledby="tab-windows-cmd">
             <div class="command-demo">
               <div class="command-line-wrapper">
-                <pre class="command-line-container"><code class="command-line">curl -fsSL https://raw.githubusercontent.com/PaulTiffany/paleae/main/paleae.py -o paleae.py &amp;&amp; python paleae.py</code></pre>
+                <pre class="command-line-container"><code class="command-line">curl -fsSL https://raw.githubusercontent.com/PaulTiffany/paleae/main/paleae.py -o paleae.py && python paleae.py</code></pre>
                 <button class="copy-btn" data-copy-target="#windows-cmd .command-line">Copy</button>
               </div>
-              <p class="command-note" style="text-align: center; width: fit-content; margin: 24px auto 0 auto;">For Windows 10/11. Double-clickable <code>paleae.py</code> </p>
+              <div class="command-note">For Windows 10/11. Double-clickable <code>paleae.py</code> after download.</div>
             </div>
           </div>
 
-          <div id="powershell" class="tab-content active">
+          <div id="powershell" class="tab-content" role="tabpanel" aria-labelledby="tab-powershell">
             <div class="command-demo">
               <div class="command-line-wrapper">
                 <pre class="command-line-container"><code class="command-line">Invoke-WebRequest -Uri https://raw.githubusercontent.com/PaulTiffany/paleae/main/paleae.py -OutFile paleae.py; python paleae.py</code></pre>
                 <button class="copy-btn" data-copy-target="#powershell .command-line">Copy</button>
               </div>
-              <p class="command-note" style="text-align: center; width: fit-content; margin: 24px auto 0 auto;">Uses PowerShell's native <code>Invoke-WebRequest</code> command to download the file.</p>
+              <div class="command-note">Uses PowerShell's native <code>Invoke-WebRequest</code> command to download the file.</div>
             </div>
           </div>
         </div>
@@ -783,7 +831,7 @@
           
           <article class="card">
             <h3>AI-Optimized Format</h3>
-            <p>Clean JSON/JSONL output with metadata, file hashes, and token estimates. Structured data that LLMs can parse and analyze effectively.</p>
+            <p>Clean JSON/JSONL output with metadata, file hashes, and token estimates. Structured data that LLMs can parse and analyze effectively. <a href="https://github.com/PaulTiffany/paleae/wiki/Cookbook" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Let your AI cook!</a></p>
           </article>
           
           <article class="card">
@@ -856,21 +904,131 @@
   </footer>
 
   <script>
+    // Robust Tab System
+    class TabSystem {
+      constructor(containerSelector) {
+        this.container = document.querySelector(containerSelector);
+        if (!this.container) return;
+        
+        this.tabButtons = this.container.querySelectorAll('.tab-btn');
+        this.tabContents = this.container.querySelectorAll('.tab-content');
+        
+        this.init();
+      }
+      
+      init() {
+        // Add event listeners to all tab buttons
+        this.tabButtons.forEach((button, index) => {
+          button.addEventListener('click', () => this.switchToTab(button));
+          button.addEventListener('keydown', (e) => this.handleKeydown(e, index));
+        });
+        
+        // Auto-select appropriate tab based on platform
+        this.selectInitialTab();
+      }
+      
+      switchToTab(activeButton) {
+        const targetId = activeButton.getAttribute('data-target');
+        
+        // Deactivate all tabs
+        this.tabButtons.forEach(btn => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-selected', 'false');
+        });
+        
+        this.tabContents.forEach(content => {
+          content.classList.remove('active');
+        });
+        
+        // Activate selected tab
+        activeButton.classList.add('active');
+        activeButton.setAttribute('aria-selected', 'true');
+        
+        const targetContent = this.container.querySelector(`#${targetId}`);
+        if (targetContent) {
+          targetContent.classList.add('active');
+        }
+      }
+      
+      handleKeydown(event, currentIndex) {
+        let newIndex = currentIndex;
+        
+        switch(event.key) {
+          case 'ArrowLeft':
+            newIndex = currentIndex > 0 ? currentIndex - 1 : this.tabButtons.length - 1;
+            break;
+          case 'ArrowRight':
+            newIndex = currentIndex < this.tabButtons.length - 1 ? currentIndex + 1 : 0;
+            break;
+          case 'Home':
+            newIndex = 0;
+            break;
+          case 'End':
+            newIndex = this.tabButtons.length - 1;
+            break;
+          default:
+            return;
+        }
+        
+        event.preventDefault();
+        this.tabButtons[newIndex].focus();
+        this.switchToTab(this.tabButtons[newIndex]);
+      }
+      
+      selectInitialTab() {
+        const platform = navigator.platform.toLowerCase();
+        const userAgent = navigator.userAgent.toLowerCase();
+        
+        let initialTabTarget;
+        
+        // Detect platform and select appropriate tab
+        if (platform.includes('win') || userAgent.includes('windows')) {
+          // Check if PowerShell is likely available (Windows 7+ usually has it)
+          if (userAgent.includes('windows nt 6.1') || userAgent.includes('windows nt 6.0')) {
+            initialTabTarget = 'windows-cmd'; // Older Windows, prefer cmd
+          } else {
+            initialTabTarget = 'powershell'; // Modern Windows, prefer PowerShell
+          }
+        } else if (platform.includes('mac') || platform.includes('darwin')) {
+          initialTabTarget = 'mac-linux';
+        } else if (platform.includes('linux') || platform.includes('unix')) {
+          initialTabTarget = 'mac-linux';
+        } else {
+          // Fallback to macOS/Linux for unknown platforms
+          initialTabTarget = 'mac-linux';
+        }
+        
+        // Find and activate the appropriate tab
+        const initialButton = this.container.querySelector(`[data-target="${initialTabTarget}"]`);
+        if (initialButton) {
+          this.switchToTab(initialButton);
+        } else {
+          // Fallback to first tab if target not found
+          if (this.tabButtons.length > 0) {
+            this.switchToTab(this.tabButtons[0]);
+          }
+        }
+      }
+    }
+
     // Theme toggle functionality
     const themeToggle = document.getElementById('theme-toggle');
     const root = document.documentElement;
 
-    // Initialize theme
-    const savedTheme = localStorage.getItem('theme') || 
-                      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    root.setAttribute('data-theme', savedTheme);
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme') || 
+                        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      root.setAttribute('data-theme', savedTheme);
+    }
 
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = root.getAttribute('data-theme');
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
-    });
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = root.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+      });
+    }
 
     // Download functionality
     const downloadTriggers = document.querySelectorAll('#download-btn, #download-link-2');
@@ -878,9 +1036,8 @@
 
     downloadTriggers.forEach(trigger => {
       trigger.addEventListener('click', async (event) => {
-        event.preventDefault(); // Prevent link from navigating
+        event.preventDefault();
 
-        // We only show the status text for the main button
         const showStatus = trigger.id === 'download-btn' && downloadStatus;
 
         try {
@@ -925,74 +1082,53 @@
       });
     });
 
-    // Copy command functionality
+    // Copy functionality
     document.querySelectorAll('.copy-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', async (e) => {
         const target = e.target.getAttribute('data-copy-target');
         const element = document.querySelector(target);
-        const text = element.value || element.textContent;
         
-        navigator.clipboard.writeText(text).then(() => {
+        if (!element) return;
+        
+        const text = element.textContent.trim();
+        
+        try {
+          await navigator.clipboard.writeText(text);
           const originalText = btn.textContent;
           btn.textContent = 'Copied!';
+          btn.style.background = 'color-mix(in srgb, var(--accent) 20%, var(--block))';
+          
           setTimeout(() => {
             btn.textContent = originalText;
+            btn.style.background = '';
           }, 1500);
-        }).catch(err => {
+        } catch (err) {
           console.error('Failed to copy:', err);
-          btn.textContent = 'Failed to copy';
-          setTimeout(() => {
-            btn.textContent = 'Copy';
-          }, 1500);
-        });
+          // Fallback for older browsers
+          try {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            
+            const originalText = btn.textContent;
+            btn.textContent = 'Copied!';
+            setTimeout(() => {
+              btn.textContent = originalText;
+            }, 1500);
+          } catch (fallbackErr) {
+            btn.textContent = 'Failed to copy';
+            setTimeout(() => {
+              btn.textContent = 'Copy';
+            }, 1500);
+          }
+        }
       });
     });
-
-    // Tab functionality for quick start
-    const tabContainer = document.querySelector('.command-tabs');
-    if (tabContainer) {
-      const tabButtons = tabContainer.querySelectorAll('.tab-btn');
-      const tabContents = tabContainer.querySelectorAll('.tab-content');
-      const platform = navigator.platform.toLowerCase();
-
-      tabButtons.forEach(button => {
-        button.setAttribute('aria-selected', 'false'); // Initialize all to false
-        button.addEventListener('click', () => {
-          // Deactivate all tabs
-          tabButtons.forEach(btn => {
-            btn.classList.remove('active');
-            btn.setAttribute('aria-selected', 'false');
-          });
-          
-          // Activate the clicked tab
-          button.classList.add('active');
-          button.setAttribute('aria-selected', 'true');
-          
-          // Hide all tab panels
-          tabContents.forEach(content => content.classList.remove('active'));
-          
-          // Show the target tab panel
-          const targetContent = tabContainer.querySelector(button.dataset.target);
-          if (targetContent) {
-            targetContent.classList.add('active');
-          }
-        });
-      });
-
-      // Auto-select tab based on OS
-      let initialTab;
-      if (platform.includes('win')) {
-        initialTab = document.querySelector('.tab-btn[data-target="#windows-cmd"]');
-      } else {
-        initialTab = document.querySelector('.tab-btn[data-target="#mac-linux"]');
-      }
-      
-      if (initialTab) {
-        initialTab.click();
-      } else if (tabButtons.length > 0) {
-        tabButtons[0].click(); // Fallback to the first tab
-      }
-    }
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1008,8 +1144,20 @@
       });
     });
 
-    
+    // Initialize everything when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+      new TabSystem('.command-tabs');
+    });
+
+    // Initialize immediately as well (in case DOMContentLoaded already fired)
+    initTheme();
+    if (document.readyState === 'loading') {
+      // DOM is still loading, wait for DOMContentLoaded
+    } else {
+      // DOM is already loaded
+      new TabSystem('.command-tabs');
+    }
   </script>
-
-
-</body></html>
+</body>
+</html>

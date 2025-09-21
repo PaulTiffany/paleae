@@ -10,7 +10,22 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [{ name = "Paul Tiffany" }]
-keywords = ["snapshot", "LLM", "AI", "JSON", "repository", "developer-tools", "metadata", "packaging", "utilities"]
+keywords = [
+  "ai",
+  "llm",
+  "rag",
+  "snapshot",
+  "codebase",
+  "repository",
+  "json",
+  "jsonl",
+  "context-window",
+  "prompt-engineering",
+  "fine-tuning",
+  "code-analysis",
+  "developer-tools",
+  "utilities",
+]
 classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Environment :: Console",

@@ -65,9 +65,9 @@ Paleae takes its instructions from [command-line arguments](paleae.wiki/Usage-Gu
 
 "Paleae" refers to the chaff that surrounds grain—the protective husks that must be separated to reveal the valuable core.
 
-Your repository contains signal and noise, essential files and build artifacts, documentation and debris. Paleae helps you separate the grain from the chaff, creating clean snapshots that highlight what matters for AI analysis.
+A codebase is the same. It contains signal (source code, key configurations) and noise (build artifacts, logs, binaries). For a Large Language Model, this noise is detrimental. It consumes precious context window space, introduces irrelevant information, and degrades the quality of analysis.
 
-Like traditional winnowing, this process requires judgment. That's why Paleae gives you precise [filtering control](paleae.wiki/Configuration.md) over what gets included and what gets filtered out.
+Paleae is the winnowing fan for your code. It helps you separate the grain from the chaff, creating clean, dense, signal-rich snapshots that are perfectly optimized for AI consumption. Like traditional winnowing, this process requires judgment. That's why Paleae gives you precise [filtering control](paleae.wiki/Configuration.md) over what gets included and what gets filtered out.
 
 ## Long-term Thinking
 

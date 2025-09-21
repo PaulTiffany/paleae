@@ -119,7 +119,7 @@ def is_text_file(path: Path) -> bool:
         if b"\x00" in chunk:
             return False
         chunk.decode("utf-8")
-        return True
+        return False
     except (OSError, UnicodeDecodeError, PermissionError):
         return False
 

@@ -34,7 +34,7 @@
 
 *   **Single File, Zero Deps:** Drop `paleae.py` into any project. It runs anywhere Python runs, with no `pip install` required.
 *   **Local-First:** Scans files on your machine. No code is ever sent over the network.
-*   **Structured Output:** Generates clean `JSON` or `JSONL`, including file paths, content, and SHA-256 hashes.
+*   **AI-Ready Output:** Generates clean `JSON` or `JSONL` designed for machine consumption. The structured format is perfect for populating LLM context windows, building Retrieval-Augmented Generation (RAG) systems, or creating training datasets.
 *   **Configurable:** Use powerful include/exclude regex patterns and a `.paleaeignore` file (with `!` negation) to precisely control what gets included.
 *   **Rigorously Tested:** 100% line and branch coverage, fully type-checked with MyPy, linted with Ruff, and hardened with Hypothesis property-based tests and `pydocstyle` compliance.
 
@@ -51,6 +51,14 @@ python paleae.py
 ```
 
 This will create a `repo_snapshot.json` file in your current directory.
+
+## Usage with AI Assistants
+
+If you are using an AI assistant, it can leverage `paleae` to help you more effectively. Your assistant can:
+1.  **Suggest snapshot commands** tailored to your project to get the best context for analysis.
+2.  **Generate custom `.paleaeignore` files** to exclude noise and focus on the most relevant code.
+
+See the [project Cookbook](https://github.com/PaulTiffany/paleae/wiki/Cookbook) for detailed recipes and examples.
 
 ## Contributing
 
@@ -154,3 +162,4 @@ The snapshot contains metadata and a list of file objects.
 This project is licensed under the [MIT License](./LICENSE).
 
 The brand assets (`assets/*.svg`) are dedicated to the public domain under [CC0 1.0 Universal](./assets/LICENSE.txt).
+E.txt).

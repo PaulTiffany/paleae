@@ -2,6 +2,20 @@
 # Copyright (c) 2025 Paul Tiffany
 # Project: paleae - Snapshot your repo for LLMs
 
+"""
+Unit and property-based tests for paleae.py.
+
+This test suite ensures the reliability and determinism of paleae, a tool designed
+to create clean, structured, and AI-optimized snapshots of code repositories. The
+tests cover everything from file parsing and filtering to the integrity of the final
+JSON/JSONL output.
+
+The core principle tested here is that paleae must be a trustworthy preprocessor
+for AI analysis. A high-quality, predictable snapshot is the foundation for any
+meaningful interaction between a Large Language Model and a codebase. These tests
+validate that foundation.
+"""
+
 import argparse
 import fnmatch
 import importlib.util
@@ -184,7 +198,9 @@ def test_translate_globs_to_regex_hypothesis(pattern, text):
     # We are testing for basic consistency.
     try:
         regex_str = fnmatch.translate(pattern)
-        compiled_regex = re.compile(regex_str)
+        # On Windows, fnmatch is case-insensitive by default.
+        flags = re.IGNORECASE if sys.platform == "win32" else 0
+        compiled_regex = re.compile(regex_str, flags)
 
         matches_glob = fnmatch.fnmatch(text, pattern)
         matches_regex = compiled_regex.match(text) is not None

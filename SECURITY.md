@@ -1,7 +1,36 @@
 # Security Policy
 
-Paleae is a **single-file, local-first snapshot tool** with **no network access** and **no runtime dependencies**. 
-The attack surface is intentionally small, but we still welcome responsible disclosure.
+## Our Pledge: Your Code is Yours
+
+Paleae is designed with a simple security pledge: **Your code is yours. It never leaves your machine.**
+
+-   **Local-First:** The tool runs entirely on your machine.
+-   **No Network Calls:** It does not and will not make network requests.
+-   **Zero Dependencies:** It has no runtime dependencies, minimizing supply chain risk.
+-   **Full Transparency:** It is a single script you can read and verify.
+
+You have full control and visibility over the data it produces.
+
+---
+
+## Security for AI Workflows & LLMs
+
+The most critical security consideration when using Paleae is ensuring that the snapshots you generate do not contain sensitive information **before you share them with an AI or any third party.**
+
+While Paleae itself is secure and local, the snapshot it creates is a new file containing your code. You are responsible for its contents.
+
+**Before sharing a snapshot:**
+1.  **Review the output JSON/JSONL file** to ensure it doesn't contain API keys, passwords, or other secrets.
+2.  **Use a `.paleaeignore` file** to exclude sensitive files and directories. Common patterns to add include:
+    ```
+    # Common secrets and config
+    .env
+    *.pem
+    *.key
+    credentials.json
+    settings.local.py
+    ```
+3.  **Ask your AI assistant for help.** An AI can help you craft a robust `.paleaeignore` file tailored to your project's framework (e.g., Django, Rails, Node.js).
 
 ---
 
